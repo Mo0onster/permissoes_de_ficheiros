@@ -1,0 +1,6 @@
+FROM ubuntu:22.04
+
+CMD [ "/bin/bash" ]
+RUN useradd -ms /bin/bash user1 && useradd -ms /bin/bash user2
+RUN mkdir /home/user1/pastausr1/ && touch /home/user1/pastausr1/texto.txt && echo ola user2 >> /home/user1/pastausr1/texto.txt && mkdir /home/user2/pastausr2/ && touch /home/user2/pastausr2/texto.txt && echo ola user1 >> /home/user2/pastausr2/texto.txt
+RUN groupadd trabalho && usermod -aG trabalho user1 && usermod -aG trabalho user2 && chown user1:trabalho /home/user1 && chown user2:trabalho /home/user2 && chmod 770 /home/user1 && chmod 770 /home/user2
