@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
 CMD [ "/bin/bash" ]
-RUN useradd -ms /bin/bash user1 && useradd -ms /bin/bash user2
-RUN mkdir /home/user1/pastausr1/ && touch /home/user1/pastausr1/texto.txt && echo ola user2 >> /home/user1/pastausr1/texto.txt && mkdir /home/user2/pastausr2/ && touch /home/user2/pastausr2/texto.txt && echo ola user1 >> /home/user2/pastausr2/texto.txt
-RUN groupadd trabalho && usermod -aG trabalho user1 && usermod -aG trabalho user2 && chown user1:trabalho /home/user1 && chown user2:trabalho /home/user2 && chmod 770 /home/user1 && chmod 770 /home/user2
+RUN useradd -ms /bin/bash user1 && useradd -ms /bin/bash user2 && useradd -ms /bin/bash user3
+RUN mkdir -p /shared/rh && touch /shared/rh/texto.txt && echo adoro recursos humanos >> /shared/rh/texto.txt && mkdir -p /shared/contabilidade && touch /shared/contabilidade/texto.txt && echo adoro contabilidade >> /shared/contabilidade/texto.txt
+RUN groupadd rh && groupadd contabilidade && usermod -aG rh user1 && usermod -aG rh user2 && usermod -aG contabilidade user3 && chown root:rh /shared/rh && chown root:contabilidade /shared/contabilidade && chmod 770 /shared/rh && chmod 770 /shared/contabilidade
